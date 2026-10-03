@@ -272,6 +272,8 @@ public class Server {
                     + "disability_type VARCHAR(50), "
                     + "expiry_time BIGINT)");
 
+            fixOldMySqlColumns(conn);
+
             try (ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM " + SLOTS)) {
                 rs.next();
                 if (rs.getInt(1) == 0) {
@@ -281,6 +283,43 @@ public class Server {
                     System.out.println("Created 60 parking slots.");
                 }
             }
+        }
+    }
+
+    /**
+     * An older version of this project may have created these tables with DATETIME
+     * columns. This server stores times as plain numbers (BIGINT), so on MySQL we
+     * convert those columns once. Safe to run on every start.
+     */
+    private static boolean isBigint(Connection conn, String table, String column) throws SQLException {
+        try (PreparedStatement ps = conn.prepareStatement(
+                "SELECT DATA_TYPE FROM information_schema.COLUMNS "
+                + "WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ? AND COLUMN_NAME = ?")) {
+            ps.setString(1, table);
+            ps.setString(2, column);
+            try (ResultSet rs = ps.executeQuery()) {
+                return !rs.next() || "bigint".equalsIgnoreCase(rs.getString(1));
+            }
+        }
+    }
+
+    private static void fixOldMySqlColumns(Connection conn) {
+        if (!USE_MYSQL) return;
+        try (Statement st = conn.createStatement()) {
+            if (!isBigint(conn, SLOTS, "expiry_time")) {
+                // old DATETIME values can't be converted meaningfully: free all slots first
+                st.executeUpdate("UPDATE " + SLOTS + " SET status='AVAILABLE', user_email=NULL, "
+                        + "user_name=NULL, vehicle_number=NULL, vehicle_type=NULL, "
+                        + "disability_type=NULL, expiry_time=NULL");
+                st.executeUpdate("ALTER TABLE " + SLOTS + " MODIFY expiry_time BIGINT NULL");
+                System.out.println("Fixed " + SLOTS + ".expiry_time (DATETIME -> BIGINT).");
+            }
+            if (!isBigint(conn, USERS, "created_at")) {
+                st.executeUpdate("ALTER TABLE " + USERS + " MODIFY created_at BIGINT NOT NULL");
+                System.out.println("Fixed " + USERS + ".created_at (DATETIME -> BIGINT).");
+            }
+        } catch (SQLException e) {
+            System.out.println("Could not adjust old table columns: " + e.getMessage());
         }
     }
 
