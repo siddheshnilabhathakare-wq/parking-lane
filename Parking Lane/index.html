@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>D Mart Super Market — Smart Parking</title>
+
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <a href="#home" class="logo" aria-label="D Mart Super Market">
+            <img src="images/logo.png" alt="D Mart" class="logo-img">
+            <span class="logo-tag">Smart Parking</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#home" data-page="home">Home</a>
+            <a href="#parking" data-page="parking">Parking</a>
+            <a href="#about" data-page="about">About</a>
+
+            <button onclick="showLogin()" id="loginNavBtn">
+                Login
+            </button>
+
+            <button onclick="showRegister()" id="registerNavBtn">
+                Register
+            </button>
+
+            <button onclick="logout()" id="logoutBtn" style="display:none;">
+                Logout
+            </button>
+        </div>
+
+    </nav>
+
+
+    <!-- PAGE: HOME -->
+    <main class="page active" id="page-home"> <!-- background: images/bg-home.jpg -->
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Smart Parking<br>
+                Made Simple
+            </h1>
+
+            <p>
+                Find an available parking slot, reserve it for 2 hours,
+                and park without the hassle.
+            </p>
+
+            <button class="hero-button" onclick="openParking()">
+                Book Your Parking
+            </button>
+
+        </div>
+
+    </section>
+
+
+    
+    <!-- QUICK FACTS -->
+    <section class="facts">
+        <div class="fact"><strong>60</strong><span>Parking slots</span></div>
+        <div class="fact"><strong>2 hrs</strong><span>Per reservation</span></div>
+        <div class="fact"><strong>10</strong><span>Accessible bays</span></div>
+        <div class="fact"><strong>Daily</strong><span>Open all week</span></div>
+    </section>
+
+    <!-- ABOUT THE STORE -->
+    <section class="store-about">
+        <div class="store-photo" role="img" aria-label="D Mart Super Market store"></div>
+        <div class="store-text">
+            <h2>Welcome to D Mart Super Market</h2>
+            <p>
+                Your neighbourhood supermarket for everyday essentials at
+                value-for-money prices. From fresh vegetables to household
+                items, you can do the whole month's shopping under one roof.
+            </p>
+            <p>
+                Parking should never make shopping stressful, so we built Smart
+                Parking: check live availability, reserve a slot for 2 hours,
+                and drive straight to your spot.
+            </p>
+            <ul class="ticks">
+                <li>Everyday low prices on daily needs</li>
+                <li>Wide range of groceries, home and personal care</li>
+                <li>Reserved parking for cars, bikes and scooties</li>
+                <li>Dedicated accessible parking bays</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- DEPARTMENTS -->
+    <section class="departments">
+        <h2>What You'll Find Inside</h2>
+        <p class="section-description">Everything your home needs, in one visit.</p>
+        <div class="dept-grid">
+            <div class="dept"><span>🥦</span><h3>Fruits &amp; Vegetables</h3><p>Fresh produce every day</p></div>
+            <div class="dept"><span>🛒</span><h3>Groceries &amp; Staples</h3><p>Rice, atta, pulses, oils and more</p></div>
+            <div class="dept"><span>🥛</span><h3>Dairy &amp; Bakery</h3><p>Milk, curd, bread and snacks</p></div>
+            <div class="dept"><span>🧴</span><h3>Personal Care</h3><p>Soaps, skincare and hygiene</p></div>
+            <div class="dept"><span>🧹</span><h3>Household</h3><p>Cleaning and kitchen essentials</p></div>
+            <div class="dept"><span>👕</span><h3>Apparel &amp; General</h3><p>Clothing, utensils and more</p></div>
+        </div>
+    </section>
+
+    <!-- VISIT US -->
+    <section class="store-info">
+        <h2>Visit Us</h2>
+        <div class="info-cards">
+            <div class="info-card"><div class="card-icon">🕗</div><h3>Store Hours</h3><p>Monday – Sunday<br>8:00 AM – 10:00 PM</p></div>
+            <div class="info-card"><div class="card-icon">📍</div><h3>Address</h3><p>D Mart Super Market<br>Your Street, Your City – 000000</p></div>
+            <div class="info-card"><div class="card-icon">📞</div><h3>Contact</h3><p>+91 00000 00000<br>care@dmart.example</p></div>
+        </div>
+        <button class="hero-button" onclick="openParking()">Reserve a Parking Slot</button>
+    </section>
+
+    </main>
+
+    <!-- PAGE: PARKING -->
+    <main class="page" id="page-parking"> <!-- background: images/bg-parking.jpg -->
+    <!-- PARKING SUMMARY -->
+    <section class="page-banner parking-banner">
+        <h1>Parking</h1>
+        <p>Check availability and reserve your slot for 2 hours.</p>
+    </section>
+
+    <section class="summary" id="parking">
+
+        <h2>Parking Availability</h2>
+
+        <p class="section-description">
+            Check the availability of parking spaces before arriving.
+        </p>
+
+        <div class="summary-cards">
+
+            <div class="summary-card">
+                <div class="card-icon">🚗</div>
+
+                <h3>Car Parking</h3>
+
+                <p>
+                    <span id="carAvailable">20</span> / 20 Available
+                </p>
+            </div>
+
+
+            <div class="summary-card">
+                <div class="card-icon">🏍️</div>
+
+                <h3>Bike & Scooty</h3>
+
+                <p>
+                    <span id="bikeAvailable">30</span> / 30 Available
+                </p>
+            </div>
+
+
+            <div class="summary-card">
+                <div class="card-icon">♿</div>
+
+                <h3>Accessible</h3>
+
+                <p>
+                    <span id="accessibleAvailable">10</span> / 10 Available
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- USER BOOKING -->
+        <div class="current-booking" id="currentBooking">
+
+            <h2>Your Current Booking</h2>
+
+            <div id="bookingDetails">
+                <p>You don't have an active booking.</p>
+            </div>
+
+        </div>
+
+
+        <!-- SLOT AREA -->
+        <div class="parking-area">
+
+            <h2>Choose Your Parking Slot</h2>
+
+            <p class="login-message" id="parkingMessage">
+                Login to book a parking slot.
+            </p>
+
+
+            <div class="slot-tabs" id="slotTabs">
+                <button class="slot-tab active" data-type="CAR" onclick="showSlotTab('CAR')">
+                    <span class="tab-icon">🚗</span>
+                    <span class="tab-label">Car</span>
+                    <span class="tab-count" id="tabCountCAR">–</span>
+                </button>
+                <button class="slot-tab" data-type="BIKE" onclick="showSlotTab('BIKE')">
+                    <span class="tab-icon">🏍️</span>
+                    <span class="tab-label">Bike &amp; Scooty</span>
+                    <span class="tab-count" id="tabCountBIKE">–</span>
+                </button>
+                <button class="slot-tab" data-type="ACCESSIBLE" onclick="showSlotTab('ACCESSIBLE')">
+                    <span class="tab-icon">♿</span>
+                    <span class="tab-label">Accessible</span>
+                    <span class="tab-count" id="tabCountACCESSIBLE">–</span>
+                </button>
+            </div>
+
+            <div class="slot-legend">
+                <span><i class="dot available"></i> Available</span>
+                <span><i class="dot reserved"></i> Reserved</span>
+            </div>
+
+            <div class="slot-section active" id="section-CAR">
+                <div class="slot-grid" id="carSlots"></div>
+            </div>
+            <div class="slot-section" id="section-BIKE">
+                <div class="slot-grid" id="bikeSlots"></div>
+            </div>
+            <div class="slot-section" id="section-ACCESSIBLE">
+                <div class="slot-grid" id="accessibleSlots"></div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    </main>
+
+    <!-- PAGE: ABOUT -->
+    <main class="page" id="page-about"> <!-- background: images/bg-about.jpg -->
+    <!-- ABOUT -->
+    <section class="page-banner about-banner">
+        <h1>About Smart Parking</h1>
+        <p>Simple, fast and free reservations for D Mart shoppers.</p>
+    </section>
+
+    <section class="info" id="about">
+
+        <h2>How Smart Parking Works</h2>
+
+        <div class="steps">
+
+            <div class="step">
+                <span>1</span>
+                <h3>Register</h3>
+                <p>Create your account using your name and email.</p>
+            </div>
+
+            <div class="step">
+                <span>2</span>
+                <h3>Choose a Slot</h3>
+                <p>Select an available car, bike or accessible slot.</p>
+            </div>
+
+            <div class="step">
+                <span>3</span>
+                <h3>Book</h3>
+                <p>Reserve your parking slot for 2 hours.</p>
+            </div>
+
+            <div class="step">
+                <span>4</span>
+                <h3>Park</h3>
+                <p>Arrive at the supermarket and park easily.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    </main>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal" id="loginModal">
+
+        <div class="modal-box">
+
+            <button class="close" onclick="closeModal()">×</button>
+
+            <h2>Login</h2>
+
+            <p>Login to manage your parking.</p>
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Email Address"
+            >
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Password"
+            >
+
+            <button class="submit-button" onclick="login()">
+                Login
+            </button>
+
+            <p class="switch">
+                Don't have an account?
+                <a href="#" onclick="switchToRegister()">Register</a>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- REGISTER MODAL -->
+    <div class="modal" id="registerModal">
+
+        <div class="modal-box">
+
+            <button class="close" onclick="closeModal()">×</button>
+
+            <h2>Create Account</h2>
+
+            <p>Register to use Smart Parking.</p>
+
+            <input
+                type="text"
+                id="registerName"
+                placeholder="Full Name"
+            >
+
+            <input
+                type="email"
+                id="registerEmail"
+                placeholder="Email Address"
+            >
+
+            <input
+                type="password"
+                id="registerPassword"
+                placeholder="Password"
+            >
+
+            <button class="submit-button" onclick="register()">
+                Create Account
+            </button>
+
+            <p class="switch">
+                Already have an account?
+                <a href="#" onclick="switchToLogin()">Login</a>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- DISABILITY MODAL -->
+    <div class="modal" id="disabilityModal">
+
+        <div class="modal-box">
+
+            <button class="close" onclick="closeDisabilityModal()">×</button>
+
+            <h2>Accessible Parking</h2>
+
+            <p>
+                Please select the reason for using an accessible parking slot.
+            </p>
+
+            <select id="disabilityType">
+
+                <option value="">
+                    Select disability type
+                </option>
+
+                <option value="Blindness">
+                    Blindness
+                </option>
+
+                <option value="Physical Handicap">
+                    Physical Handicap
+                </option>
+
+                <option value="Wheelchair User">
+                    Wheelchair User
+                </option>
+
+                <option value="Mobility Impairment">
+                    Mobility Impairment
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+            <input type="text" id="accVehicleNumber" placeholder="Vehicle Number e.g. MH27AB1234">
+
+            <div class="vehicle-choice" id="accVehicleChoice"></div>
+            <input type="hidden" id="accVehicleType">
+
+            <button
+                class="submit-button"
+                onclick="confirmAccessibleBooking()">
+                Continue Booking
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- VEHICLE MODAL -->
+    <div class="modal" id="vehicleModal">
+
+        <div class="modal-box">
+
+            <button class="close" onclick="closeVehicleModal()">×</button>
+
+            <h2>Vehicle Details</h2>
+
+            <p id="selectedSlotText"></p>
+
+            <input
+                type="text"
+                id="vehicleNumber"
+                placeholder="Vehicle Number e.g. MH27AB1234"
+            >
+
+            <div class="vehicle-choice" id="vehicleChoice"></div>
+            <input type="hidden" id="vehicleType">
+
+            <button
+                class="submit-button"
+                onclick="confirmNormalBooking()">
+                Book Slot
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST CONTAINER (for non-blocking notifications) -->
+    <div class="toast-container" id="toastContainer"></div>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 D Mart Super Market
+        </p>
+
+        <p>
+            Supermarket Parking Management
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+
+/* =========================
+   PAGES (one visible at a time)
+========================= */
+
+.page {
+    display: none;
+    flex: 1;
+}
+
+.page.active {
+    display: block;
+    animation: fade-in 0.25s ease;
+}
+
+
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    height: 70px;
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: bold;
+    color: #15803d;
+}
+
+.logo-img {
+    height: 46px;
+    width: auto;
+    display: block;
+}
+
+.logo-tag {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    padding-left: 12px;
+    border-left: 2px solid #d1d5db;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #374151;
+    font-weight: 500;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #2563eb;
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 3px;
+}
+
+.nav-links button {
+    border: none;
+    background: #2563eb;
+    color: white;
+
+    padding: 10px 20px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.nav-links button:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   HERO
+   Image: images/hero.jpg
+========================= */
+
+.hero {
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 70px 10%;
+
+    background-color: #1f2937;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+        url('images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    line-height: 1.1;
+
+    color: #ffffff;
+
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color: #e5e7eb;
+
+    margin-bottom: 30px;
+}
+
+.hero-button {
+    background: #2563eb;
+
+    color: white;
+
+    border: none;
+
+    padding: 15px 30px;
+
+    font-size: 16px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.hero-button:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary {
+    padding: 70px 10%;
+
+    text-align: center;
+}
+
+.summary h2 {
+    font-size: 34px;
+
+    margin-bottom: 10px;
+}
+
+.section-description {
+    color: #6b7280;
+
+    margin-bottom: 40px;
+}
+
+.summary-cards {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+}
+
+.summary-card {
+    background: white;
+
+    width: 280px;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+    transition: transform 0.2s;
+}
+
+.summary-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 45px;
+
+    margin-bottom: 15px;
+}
+
+.summary-card h3 {
+    margin-bottom: 10px;
+
+    font-size: 21px;
+}
+
+.summary-card p {
+    color: #16a34a;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   CURRENT BOOKING
+========================= */
+
+.current-booking {
+    margin: 40px 0;
+}
+
+.booking-card {
+    background: white;
+
+    max-width: 400px;
+
+    margin: 20px auto 0;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+    text-align: left;
+}
+
+.booking-card h3 {
+    margin-bottom: 12px;
+    color: #2563eb;
+}
+
+.booking-card p {
+    margin-bottom: 8px;
+    color: #374151;
+}
+
+.cancel-button {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.cancel-button:hover {
+    background: #b91c1c;
+}
+
+
+/* =========================
+   PARKING SLOTS
+========================= */
+
+.parking-area {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.login-message {
+    color: #6b7280;
+    margin-bottom: 25px;
+}
+
+.slot-section {
+    display: none;
+}
+
+.slot-section.active {
+    display: block;
+    animation: fade-in 0.25s ease;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- tabs ---- */
+
+.slot-tabs {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 6px;
+    margin-bottom: 18px;
+
+    background: #e8edf7;
+    border-radius: 14px;
+}
+
+.slot-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 18px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: transparent;
+    color: #4b5563;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+}
+
+.slot-tab:hover {
+    color: #2563eb;
+}
+
+.slot-tab.active {
+    background: #ffffff;
+    color: #2563eb;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+}
+
+.tab-icon {
+    font-size: 20px;
+}
+
+.tab-count {
+    min-width: 26px;
+    padding: 2px 8px;
+
+    border-radius: 999px;
+
+    background: #dcfce7;
+    color: #166534;
+
+    font-size: 12px;
+}
+
+/* ---- legend ---- */
+
+.slot-legend {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+
+    margin-bottom: 22px;
+
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+    border-radius: 50%;
+}
+
+.dot.available { background: #16a34a; }
+.dot.reserved  { background: #dc2626; }
+
+/* ---- slot tiles ---- */
+
+.slot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 14px;
+
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.parking-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+
+    padding: 14px 8px 12px;
+
+    border-radius: 14px;
+    border: 2px solid transparent;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.slot-icon {
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.slot-number {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.slot-status {
+    margin-top: 4px;
+    padding: 2px 9px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+}
+
+.parking-slot.available {
+    background: #ffffff;
+    color: #166534;
+    border-color: #bbf7d0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.parking-slot.available .slot-status {
+    background: #dcfce7;
+}
+
+.parking-slot.available:hover {
+    border-color: #16a34a;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(22, 163, 74, 0.22);
+}
+
+.parking-slot.reserved {
+    background: #f3f4f6;
+    color: #9ca3af;
+    border-color: #e5e7eb;
+    cursor: not-allowed;
+}
+
+.parking-slot.reserved .slot-icon {
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+
+.parking-slot.reserved .slot-status {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+
+/* =========================
+   VEHICLE TYPE CHOOSER (modals)
+========================= */
+
+.vehicle-choice {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.vehicle-option {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    padding: 14px 6px;
+
+    background: #f9fafb;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: bold;
+    color: #374151;
+
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+
+.vehicle-option .v-icon {
+    font-size: 30px;
+}
+
+.vehicle-option:hover {
+    border-color: #93c5fd;
+    transform: translateY(-2px);
+}
+
+.vehicle-option.selected {
+    border-color: #2563eb;
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+.info {
+    background: white;
+
+    padding: 70px 10%;
+
+    text-align: center;
+}
+
+.info h2 {
+    font-size: 34px;
+
+    margin-bottom: 40px;
+}
+
+.steps {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+}
+
+.step {
+    width: 220px;
+}
+
+.step span {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    background: #2563eb;
+
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+.step h3 {
+    margin-bottom: 10px;
+}
+
+.step p {
+    color: #6b7280;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    z-index: 1000;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-box {
+    background: white;
+
+    width: 400px;
+
+    max-width: 90%;
+
+    padding: 35px;
+
+    border-radius: 15px;
+
+    position: relative;
+
+    text-align: center;
+}
+
+.modal-box h2 {
+    font-size: 30px;
+
+    margin-bottom: 10px;
+}
+
+.modal-box p {
+    color: #6b7280;
+
+    margin-bottom: 20px;
+}
+
+.modal-box input,
+.modal-box select {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+}
+
+.submit-button {
+    width: 100%;
+
+    padding: 13px;
+
+    background: #2563eb;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 7px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background: #1d4ed8;
+}
+
+.close {
+    position: absolute;
+
+    right: 18px;
+    top: 12px;
+
+    background: none;
+
+    border: none;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    color: #6b7280;
+}
+
+.switch {
+    margin-top: 20px;
+
+    font-size: 14px;
+}
+
+.switch a {
+    color: #2563eb;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   TOAST NOTIFICATIONS
+   (replaces jarring alert() popups)
+========================= */
+
+.toast-container {
+    position: fixed;
+
+    bottom: 24px;
+    right: 24px;
+
+    z-index: 2000;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    min-width: 240px;
+    max-width: 340px;
+
+    padding: 14px 18px;
+
+    border-radius: 9px;
+
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+
+    animation: toast-in 0.25s ease, toast-out 0.25s ease 2.75s;
+    animation-fill-mode: forwards;
+}
+
+.toast.success {
+    background: #16a34a;
+}
+
+.toast.error {
+    background: #dc2626;
+}
+
+.toast.info {
+    background: #2563eb;
+}
+
+@keyframes toast-in {
+    from { transform: translateX(120%); opacity: 0; }
+    to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes toast-out {
+    from { transform: translateX(0);    opacity: 1; }
+    to   { transform: translateX(120%); opacity: 0; }
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #111827;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .navbar {
+        height: auto;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 10px 16px;
+    }
+
+    .logo-img { height: 36px; }
+    .logo-tag { display: none; }
+
+    .nav-links {
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .nav-links button {
+        padding: 7px 12px;
+        font-size: 13px;
+    }
+
+    .hero {
+        min-height: 70vh;
+    }
+
+    .slot-tab {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .slot-grid {
+        grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
+        gap: 10px;
+    }
+
+    .hero {
+        padding: 50px 20px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .toast-container {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .toast {
+        max-width: none;
+    }
+}
+
+
+/* =========================
+   PAGE BANNERS (Parking / About)
+   Images: images/parking.jpg, images/about.jpg
+========================= */
+
+.page-banner {
+    padding: 70px 10%;
+    text-align: center;
+    color: #ffffff;
+    background-color: #1e3a8a;
+    background-size: cover;
+    background-position: center;
+}
+
+.page-banner h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.page-banner p {
+    font-size: 17px;
+    color: #e5e7eb;
+}
+
+.parking-banner {
+    background-image:
+        linear-gradient(rgba(17, 24, 39, 0.6), rgba(17, 24, 39, 0.6)),
+        url('images/parking.jpg');
+}
+
+.about-banner {
+    background-image:
+        linear-gradient(rgba(17, 24, 39, 0.6), rgba(17, 24, 39, 0.6)),
+        url('images/about.jpg');
+}
+
+.parking-banner + .summary {
+    padding-top: 50px;
+}
+
+
+/* =========================
+   HOME: FACTS, STORE, DEPARTMENTS, VISIT
+   Image: images/store.jpg
+========================= */
+
+.facts {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px 60px;
+    padding: 30px 10%;
+    background: #2563eb;
+    color: white;
+    text-align: center;
+}
+
+.fact strong {
+    display: block;
+    font-size: 30px;
+}
+
+.fact span {
+    font-size: 14px;
+    color: #dbeafe;
+}
+
+.store-about {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 80px 10%;
+    background: #ffffff;
+}
+
+.store-photo {
+    flex: 1;
+    min-height: 340px;
+    border-radius: 18px;
+    background-color: #dbe4f5;
+    background-image: url('images/store.jpg');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.store-text {
+    flex: 1;
+}
+
+.store-text h2 {
+    font-size: 34px;
+    margin-bottom: 18px;
+}
+
+.store-text p {
+    color: #4b5563;
+    line-height: 1.7;
+    margin-bottom: 14px;
+}
+
+.ticks {
+    list-style: none;
+    margin-top: 18px;
+}
+
+.ticks li {
+    padding-left: 30px;
+    margin-bottom: 10px;
+    position: relative;
+    font-weight: 500;
+}
+
+.ticks li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #16a34a;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 22px;
+}
+
+.departments {
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.departments h2,
+.store-info h2 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.dept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.dept {
+    background: white;
+    padding: 28px 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    transition: transform 0.2s;
+}
+
+.dept:hover {
+    transform: translateY(-5px);
+}
+
+.dept span {
+    font-size: 40px;
+}
+
+.dept h3 {
+    margin: 10px 0 6px;
+    font-size: 18px;
+}
+
+.dept p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.store-info {
+    padding: 70px 10%;
+    background: #ffffff;
+    text-align: center;
+}
+
+.info-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 35px 0;
+}
+
+.info-card {
+    width: 280px;
+    padding: 28px;
+    border-radius: 15px;
+    background: #f5f7fb;
+}
+
+.info-card h3 {
+    margin-bottom: 8px;
+}
+
+.info-card p {
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.empty-slots {
+    grid-column: 1 / -1;
+    color: #6b7280;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .store-about {
+        flex-direction: column;
+        padding: 50px 20px;
+    }
+
+    .store-photo {
+        width: 100%;
+        min-height: 220px;
+    }
+
+    .page-banner h1 {
+        font-size: 32px;
+    }
+}
+
+
+/* =====================================================
+   YOUR OWN BACKGROUND IMAGES  (edit this block)
+   -----------------------------------------------------
+   1) Page backgrounds  -> show behind the cards/sections
+        images/bg-home.jpg
+        images/bg-parking.jpg
+        images/bg-about.jpg
+   2) Top panels (hero / banners)
+        Home hero     -> images/hero.jpg
+        Parking banner-> images/parking.jpg
+        About banner  -> images/about.jpg  (falls back to parking.jpg)
+   Just drop a file with that exact name into the images
+   folder. If a file is missing nothing breaks.
+===================================================== */
+
+.page {
+    background-color: #f5f7fb;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* soft white wash so text on the cards stays readable */
+#page-home    { background-image: linear-gradient(rgba(245,247,251,.62), rgba(245,247,251,.62)), url('images/bg-home.jpg'); }
+#page-parking { background-image: linear-gradient(rgba(245,247,251,.62), rgba(245,247,251,.62)), url('images/bg-parking.jpg'); }
+#page-about   { background-image: linear-gradient(rgba(245,247,251,.80), rgba(245,247,251,.80)), url('images/bg-about.jpg');
+                /* this one is a small pattern, so it tiles instead of stretching */
+                background-size: auto, 350px 350px;
+                background-repeat: no-repeat, repeat;
+                background-attachment: scroll; }
+
+/* roomier banner panels so the photos have space */
+.page-banner {
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-position: center 30%;
+}
+
+.parking-banner {
+    background-image:
+        linear-gradient(rgba(17, 24, 39, 0.45), rgba(17, 24, 39, 0.45)),
+        url('images/parking.jpg');
+}
+
+.about-banner {
+    background-image:
+        linear-gradient(rgba(17, 24, 39, 0.5), rgba(17, 24, 39, 0.5)),
+        url('images/about.jpg'),
+        url('images/parking.jpg');
+}
+
+/* white content panels become slightly see-through when a bg image is used */
+.info, .store-about, .store-info {
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.store-photo {
+    min-height: 420px;
+    background-position: center top;
+}
+
+@media (max-width: 768px) {
+    .page { background-attachment: scroll; }
+    .store-photo { min-height: 300px; }
+}
