@@ -9,9 +9,13 @@
 // ------------------------------------------
 const BACKEND_URL = "https://YOUR-BACKEND-URL.onrender.com";
 
-const API_BASE = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-    ? ""
-    : BACKEND_URL;
+// Same-origin (empty) when the page is served by the Java server itself:
+// on localhost and on your *.onrender.com address.
+const API_BASE = (
+    location.hostname === "localhost" ||
+    location.hostname === "127.0.0.1" ||
+    location.hostname.endsWith(".onrender.com")
+) ? "" : BACKEND_URL;
 
 let selectedSlot = null;
 let selectedSlotType = null;
